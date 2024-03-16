@@ -1,0 +1,15 @@
+# Platform-specific output (Android)
+/platforms/
+/plugins
+/*.apk
+/*.ap_
+/*.aab
+/*.keystore
+/*.jks
+
+# Cordova build artifacts
+/www/
+/node_modules/
+*.log
+.idea/
+.DS_Store
