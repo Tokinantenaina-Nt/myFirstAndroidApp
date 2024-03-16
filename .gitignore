@@ -8,7 +8,7 @@
 /*.jks
 
 # Cordova build artifacts
-/www/
+
 /node_modules/
 *.log
 .idea/

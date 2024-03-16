@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculatrice</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f4f4f4;
+      }
+
+      #calculator {
+        width: 300px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      #screen {
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 0 10px;
+        font-size: 1.5em;
+        background-color: #f0f0f0;
+      }
+
+      #buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1px;
+      }
+
+      button {
+        border: none;
+        padding: 15px;
+        font-size: 1em;
+        cursor: pointer;
+        outline: none;
+      }
+
+      button.operator {
+        background-color: #f1c40f;
+      }
+
+      button.double {
+        grid-column: span 2;
+      }
+
+      button.equal {
+        background-color: #2ecc71;
+        color: #fff;
+      }
+
+      button.delete {
+        background-color: #e74c3c;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="calculator">
+      <div id="screen"></div>
+      <div id="buttons">
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button class="operator">/</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button class="operator">*</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button class="operator">-</button>
+        <button class="double">0</button>
+        <button>.</button>
+        <button class="operator">+</button>
+        <button class="equal double">=</button>
+        <button class="delete">DEL</button>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const screen = document.getElementById("screen");
+        const buttons = document.getElementById("buttons");
+
+        buttons.addEventListener("click", function(e) {
+          if (e.target.tagName === "BUTTON") {
+            if (e.target.classList.contains("equal")) {
+              try {
+                screen.textContent = eval(screen.textContent);
+              } catch (error) {
+                screen.textContent = "Error";
+              }
+            } else if (e.target.classList.contains("delete")) {
+              screen.textContent = screen.textContent.slice(0, -1);
+            } else {
+              screen.textContent += e.target.textContent;
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
